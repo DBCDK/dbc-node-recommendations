@@ -1,0 +1,35 @@
+{
+  "name": "dbc-node-opensuggest",
+  "version": "0.0.1",
+  "description": "Client for the DBC OpenSuggestion service",
+  "main": "dist/OpenSuggest.client.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register src/__tests__",
+    "lint": "eslint src",
+    "test:watch": "mocha --compilers js:babel/register src/__tests__ -w",
+    "test:junit": "mocha --compilers js:babel/register src/__tests__ -R mocha-junit-reporter",
+    "build": "rm -rf dist && babel ./src -d dist --ignore __tests__",
+    "build:watch": "rm -rf dist && babel ./src --watch -d dist --ignore __tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DBCDK/dbc-node-opensuggest#develop"
+  },
+  "author": "DBC A/S",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^2.1.1",
+    "node-rest-client": "^1.5.1"
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "babel-core": "^5.5.6",
+    "babel-eslint": "^3.1.15",
+    "chai": "^3.0.0",
+    "eslint": "^0.21.0",
+    "eslint-loader": "^0.14.0",
+    "eslint-plugin-react": "^2.5.2",
+    "mocha": "^2.2.5",
+    "mocha-junit-reporter": "^1.4.0"
+  }
+}
