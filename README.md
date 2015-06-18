@@ -1,4 +1,4 @@
-# dbc-node-opensuggest
+# dbc-node-recommendations
 Client for the DBC Recommendation service
 
 The service returns a list of recommendations for a given profile (a list of manifestations)
