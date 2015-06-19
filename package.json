@@ -2,7 +2,7 @@
   "name": "dbc-node-recommendations",
   "version": "0.0.1",
   "description": "Client for the DBC Recommendation service",
-  "main": "dist/OpenSuggest.client.js",
+  "main": "dist/Recommendation.client.js",
   "scripts": {
     "test": "mocha --compilers js:babel/register src/__tests__",
     "lint": "eslint src",
