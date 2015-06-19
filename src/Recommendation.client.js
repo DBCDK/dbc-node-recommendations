@@ -50,7 +50,7 @@ function registerMethods(endpoint) {
  * @returns {{getSuggestions}}
  * @constructor
  */
-export default function OpenSuggestion(endpoint) {
+export default function Recommendations(endpoint) {
 
   return registerMethods(endpoint);
 }
