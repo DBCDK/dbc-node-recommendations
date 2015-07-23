@@ -28,7 +28,6 @@ describe('Test method getRecommendations', () => {
     client.getRecommendations(params)
       .then((response) => {
         expect(response.result.length).to.equal(100);
-        console.log(response.result[0][1]);
         expect(response.result[0][0]).to.equal('870970-basis:27175953');
         done();
       });
