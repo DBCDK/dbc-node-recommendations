@@ -1,14 +1,14 @@
 {
   "name": "dbc-node-recommendations",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Client for the DBC Recommendation service",
   "main": "dist/Recommendation.client.js",
   "scripts": {
-    "test": "mocha --compilers js:babel/register src/__tests__ -R mocha-jenkins-reporter",
     "lint": "eslint ./src",
     "lint:checkstyle": "eslint ./src  -o report.xml -f checkstyle",
-    "test:watch": "mocha --compilers js:babel/register src/__tests__ -w",
+    "test": "mocha --compilers js:babel/register src/__tests__ -R mocha-jenkins-reporter",
     "test:junit": "npm run test",
+    "test:watch": "mocha --compilers js:babel/register src/__tests__ -w",
     "build": "rm -rf dist && babel ./src -d dist --ignore __tests__",
     "build:watch": "rm -rf dist && babel ./src --watch -d dist --ignore __tests__"
   },
@@ -16,8 +16,8 @@
     "type": "git",
     "url": "git+https://github.com/DBCDK/dbc-node-recommendations#develop"
   },
-  "author": "DBC A/S",
-  "license": "ISC",
+  "author": "dbcdk",
+  "license": "GPL-3.0",
   "dependencies": {
     "es6-promise": "^2.1.1",
     "lodash": "3.9.3",
