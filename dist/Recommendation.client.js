@@ -16,15 +16,20 @@ var client = new _nodeRestClient.Client();
 /**
  * Method for getting recommendations
  *
- * @param params
+ * @param {Object} params
  * @returns {Promise}
  */
-function getRecommendations(profile) {
-  if (!(0, _lodash.isArray)(profile)) {
-    return _es6Promise.Promise.reject({ statusMessage: 'Parameters should be an array' });
+function getRecommendations(params) {
+  if (!(0, _lodash.isPlainObject)(params) || (0, _lodash.isUndefined)(params.likes) || (0, _lodash.isUndefined)(params.dislikes)) {
+    return _es6Promise.Promise.reject({ statusMessage: 'Parameters should be an objet that contains both a like and a dislike parameter. I.e. { like: [], dislike: [] }' });
   }
+
+  if (!(0, _lodash.isArray)(params.likes) || !(0, _lodash.isArray)(params.dislikes)) {
+    return _es6Promise.Promise.reject({ statusMessage: 'Parameters \'like\' and \'dislike\' should be arrays. I.e. { like: [], dislike: [] }' });
+  }
+
   var parameters = {
-    data: JSON.stringify({ like: profile })
+    data: JSON.stringify({ like: params.likes, dislike: params.dislikes })
   };
   return new _es6Promise.Promise(function (resolve, reject) {
     client.methods.getRecommendations(parameters, function (data, response) {

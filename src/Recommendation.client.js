@@ -2,27 +2,33 @@
 
 import {Promise} from 'es6-promise';
 import {Client} from 'node-rest-client';
-import {isArray} from 'lodash';
-let client = new Client();
+import {isPlainObject, isUndefined, isArray} from 'lodash';
+const client = new Client();
 
 /**
  * Method for getting recommendations
  *
- * @param params
+ * @param {Object} params
  * @returns {Promise}
  */
-function getRecommendations(profile) {
-  if (!isArray(profile)) {
-    return Promise.reject({statusMessage: 'Parameters should be an array'});
+function getRecommendations(params) {
+  if (!isPlainObject(params) || isUndefined(params.likes) || isUndefined(params.dislikes)) {
+    return Promise.reject({statusMessage: 'Parameters should be an objet that contains both a like and a dislike parameter. I.e. { like: [], dislike: [] }'});
   }
+
+  if (!isArray(params.likes) || !isArray(params.dislikes)) {
+    return Promise.reject({statusMessage: 'Parameters \'like\' and \'dislike\' should be arrays. I.e. { like: [], dislike: [] }'});
+  }
+
   var parameters = {
-    data: JSON.stringify({like: profile})
+    data: JSON.stringify({like: params.likes, dislike: params.dislikes})
   };
   return new Promise((resolve, reject) => {
     client.methods.getRecommendations(parameters, (data, response) => {
       if (response.statusCode === 200) {
         resolve(JSON.parse(data));
-      } else {
+      }
+      else {
         reject(response);
       }
     });
