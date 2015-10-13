@@ -23,6 +23,7 @@ function getRecommendations(params) {
   var parameters = {
     data: JSON.stringify({like: params.likes, dislike: params.dislikes})
   };
+
   return new Promise((resolve, reject) => {
     client.methods.getRecommendations(parameters, (data, response) => {
       if (response.statusCode === 200) {

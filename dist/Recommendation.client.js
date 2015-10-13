@@ -31,6 +31,7 @@ function getRecommendations(params) {
   var parameters = {
     data: JSON.stringify({ like: params.likes, dislike: params.dislikes })
   };
+
   return new _es6Promise.Promise(function (resolve, reject) {
     client.methods.getRecommendations(parameters, function (data, response) {
       if (response.statusCode === 200) {
