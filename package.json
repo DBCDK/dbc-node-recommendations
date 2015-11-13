@@ -1,6 +1,6 @@
 {
   "name": "dbc-node-recommendations",
-  "version": "2.0.1",
+  "version": "3.0.1",
   "description": "Client for the DBC Recommendation service",
   "main": "dist/Recommendation.client.js",
   "scripts": {
@@ -19,9 +19,8 @@
   "author": "dbcdk",
   "license": "GPL-3.0",
   "dependencies": {
-    "es6-promise": "^3.0.2",
     "lodash": "3.10.1",
-    "node-rest-client": "^1.5.1"
+    "request": "^2.65.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
