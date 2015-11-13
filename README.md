@@ -13,10 +13,12 @@ import Recommendation from 'dbc-node-recommendation'
 
 // Setup service 
 const endpoint = 'http://url.to.service/';
-let recommendation = Recommendation(endpoint);
+const filters = ['rec.collectionIdentifier:775100-katalog'];
+let recommendation = Recommendation(endpoint, filters);
 
-// Parameters is an array of DBC well identifiers
-const params = [
+// Parameters is an object containing likes and dislikes of DBC well identifiers
+const params = {
+  like: [
    '870970-basis:44582937',
    '870970-basis:42307963',
    '870970-basis:26488303',
@@ -31,7 +33,9 @@ const params = [
    '870970-basis:23202182',
    '870970-basis:43847546',
    '870970-basis:44777010'
- ];
+  ],
+  dislike: []
+};
 
 // Make response
 recommendation.getRecommendations(params)
