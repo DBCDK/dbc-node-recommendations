@@ -21,7 +21,6 @@ function getRecommendations(endpoint, filters, params) {
   }
 
   var parameters = JSON.stringify({like: params.likes, dislike: params.dislikes, filter: filters, maxresults: 100});
-  console.error(parameters);
 
   return new Promise((resolve, reject) => {
     request.post({
@@ -48,7 +47,6 @@ function getRecommendations(endpoint, filters, params) {
  * @constructor
  */
 export default function Recommendations(endpoint, filters) {
-  console.error(filters);
   return {
     getRecommendations: curry(getRecommendations)(endpoint, filters)
   };

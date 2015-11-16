@@ -31,7 +31,6 @@ function getRecommendations(endpoint, filters, params) {
   }
 
   var parameters = JSON.stringify({ like: params.likes, dislike: params.dislikes, filter: filters, maxresults: 100 });
-  console.error(parameters);
 
   return new Promise(function (resolve, reject) {
     _request2['default'].post({
@@ -59,7 +58,6 @@ function getRecommendations(endpoint, filters, params) {
  */
 
 function Recommendations(endpoint, filters) {
-  console.error(filters);
   return {
     getRecommendations: (0, _lodash.curry)(getRecommendations)(endpoint, filters)
   };
