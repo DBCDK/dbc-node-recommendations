@@ -1,6 +1,6 @@
 {
   "name": "dbc-node-recommendations",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Client for the DBC Recommendation service",
   "main": "dist/Recommendation.client.js",
   "scripts": {
