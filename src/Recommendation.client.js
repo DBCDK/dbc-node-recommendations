@@ -46,8 +46,17 @@ function getRecommendations(endpoint, filters, params) {
  * @returns {{getRecommendations}}
  * @constructor
  */
-export default function Recommendations(endpoint, filters) {
+export default function Recommendations(config) {
+  if (isUndefined(config)) {
+    throw new Error('config is undefined');
+  }
+  if (!config.endpoint) {
+    throw new Error('An endpoint needs to be provided with config');
+  }
+
+  const filters = config.filters || null;
+
   return {
-    getRecommendations: curry(getRecommendations)(endpoint, filters)
+    getRecommendations: curry(getRecommendations)(config.endpoint, filters)
   };
 }
