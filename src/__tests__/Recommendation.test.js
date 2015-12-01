@@ -10,8 +10,8 @@ describe('Test method getRecommendations', () => {
   });
 
   it('returns methods on init', () => {
-    const recommendations = Recommendations({endpoint:'test'});
-    expect(recommendations.getRecommendations).to.be.method;
+    const recommendations = Recommendations({endpoint: 'test'});
+    expect(recommendations.getRecommendations).to.be.method; // eslint-disable-line no-unused-expressions
   });
 
 
