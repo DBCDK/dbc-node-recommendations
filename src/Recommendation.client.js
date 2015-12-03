@@ -11,7 +11,7 @@ import {curry, isPlainObject, isUndefined, isArray} from 'lodash';
  * @param {Object} params
  * @returns {Promise}
  */
-function getRecommendations(endpoint, filters, params) {
+function getRecommendations(endpoint, params) {
   if (!isPlainObject(params) || isUndefined(params.likes) || isUndefined(params.dislikes)) {
     return Promise.reject({statusMessage: 'Parameters should be an objet that contains both a like and a dislike parameter. I.e. { like: [], dislike: [] }'});
   }
@@ -20,7 +20,7 @@ function getRecommendations(endpoint, filters, params) {
     return Promise.reject({statusMessage: 'Parameters \'like\' and \'dislike\' should be arrays. I.e. { like: [], dislike: [] }'});
   }
 
-  var parameters = JSON.stringify({like: params.likes, dislike: params.dislikes, filters: filters, maxresults: 100});
+  let parameters = JSON.stringify({like: params.likes, dislike: params.dislikes, filters: params.filters || [], maxresults: 100});
 
   return new Promise((resolve, reject) => {
     request.post({
@@ -54,9 +54,7 @@ export default function Recommendations(config) {
     throw new Error('An endpoint needs to be provided with config');
   }
 
-  const filters = config.filters || null;
-
   return {
-    getRecommendations: curry(getRecommendations)(config.endpoint, filters)
+    getRecommendations: curry(getRecommendations)(config.endpoint)
   };
 }
