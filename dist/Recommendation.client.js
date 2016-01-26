@@ -30,7 +30,7 @@ function getRecommendations(endpoint, params) {
     return Promise.reject({ statusMessage: 'Parameters \'like\' and \'dislike\' should be arrays. I.e. { like: [], dislike: [] }' });
   }
 
-  var parameters = JSON.stringify({ like: params.likes, dislike: params.dislikes, filters: params.filters || [], maxresults: 20 });
+  var parameters = JSON.stringify({ like: params.likes, dislike: params.dislikes, filter: params.filter || [], maxresults: 20 });
 
   return new Promise(function (resolve, reject) {
     _request2['default'].post({
